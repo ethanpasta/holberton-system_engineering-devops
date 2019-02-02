@@ -1,2 +1,2 @@
 #!/bin/bash
-cut -d: -f5,6 -s --output-delimiter=':' /etc/passwd
+cut -d':' -f 1,6 --output-delimiter=':' /etc/passwd
