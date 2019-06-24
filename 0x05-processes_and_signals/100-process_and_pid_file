@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# script displays an infinite loop
+sudo bash -c 'echo $$ > /var/run/holbertonscript.pid'
+while true; do
+      echo "To infinity and beyond"
+      trap "echo 'Y U no love me?!'" SIGINT
+      trap 'echo "I hate the kill command" ; sudo rm /var/run/holbertonscript.pid ; exit 1' SIGQUIT SIGTERM
+done
