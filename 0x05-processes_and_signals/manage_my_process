@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# script infinitely writes a message to a file
+while true; do
+      sudo bash -c 'echo "I am alive!" >> /tmp/my_process'
+      sleep 2
+done
