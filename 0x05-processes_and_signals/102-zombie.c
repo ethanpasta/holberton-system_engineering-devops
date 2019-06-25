@@ -2,6 +2,20 @@
 #include <stdlib.h>
 
 /**
+ * infinite_while - function runs an infinite loop
+ *
+ * Return: random value
+ */
+int infinite_while(void)
+{
+	while (1)
+	{
+		sleep(1);
+	}
+	return (0);
+}
+
+/**
  * main - entry point
  *
  * Return: exit status
@@ -15,24 +29,10 @@ int main(void)
 	{
 		child = fork();
 		if (child == 0)
-			return (0);
+			exit(1);
 		else
 			printf("Zombie process created, PID: %d\n", child);
 	}
 	infinite_while();
 	return (1);
-}
-
-/**
- * infinite_while - function runs an infinite loop
- *
- * Return: returns 0
- */
-int infinite_while(void)
-{
-	while (1)
-	{
-		sleep(1);
-	}
-	return (0);
 }
