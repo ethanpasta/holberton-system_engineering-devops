@@ -15,10 +15,9 @@ int main(void)
 	{
 		child = fork();
 		if (child == 0)
-		{
-			printf("Zombie process created, PID: %d\n", getpid());
-			exit(0);
-		}
+			return (0);
+		else
+			printf("Zombie process created, PID: %d\n", child);
 	}
 	infinite_while();
 	return (1);
