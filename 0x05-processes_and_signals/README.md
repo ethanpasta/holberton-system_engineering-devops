@@ -59,10 +59,6 @@ What you should learn from this project:
 ### [11. Zombie](./102-zombie.c)
 * 
 
-
-### [12. Screencast](./103-screencast_unix_signal)
-* Now that you have mastered signals, how about sharing your knowledge?
-
 ---
 
 ## Author
