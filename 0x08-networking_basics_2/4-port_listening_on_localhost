@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# script lists on port 98 on localhost
+nc -p 98 -l
