@@ -22,7 +22,6 @@ Host *
 #   ForwardX11Trusted yes
 #   RhostsRSAAuthentication no
 #   RSAAuthentication yes
-#   PasswordAuthentication yes
 #   HostbasedAuthentication no
 #   GSSAPIAuthentication no
 #   GSSAPIDelegateCredentials no
@@ -48,8 +47,8 @@ Host *
 #   VisualHostKey no
 #   ProxyCommand ssh -q -W %h:%p gateway.example.com
 #   RekeyLimit 1G 1h
-    PubkeyAuthentication no
     IdentityFile ~/.ssh/holberton
+    PasswordAuthentication yes
     SendEnv LANG LC_*
     HashKnownHosts yes
     GSSAPIAuthentication yes
