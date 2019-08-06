@@ -3,10 +3,10 @@ include stdlib
 
 file_line { 'no_password':
   path   => '/etc/ssh/ssh_config',
-  line   => '    PubkeyAuthentication no',
+  line   => 'PasswordAuthentication no'
 }
 
 file_line { 'identity_file':
   path   => '/etc/ssh/ssh_config',
-  line   => '    IdentityFile ~/.ssh/holberton',
+  line   => 'IdentityFile ~/.ssh/holberton',
 }
