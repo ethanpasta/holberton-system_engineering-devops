@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # Script installs ngingx, and creates temp html index file
-apt-get -y install nginx
-mkdir -p /var/www/html/
+sudo apt-get -y install nginx
+sudo mkdir -p /var/www/html/
 echo "Holberton School says hello" | sudo tee index.html
