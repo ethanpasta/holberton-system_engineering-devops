@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Script configures an Nginx 404 page
+apt-get -y update
+apt-get -y install nginx
+ufw allow 'Nginx HTTP'
+echo "Holberton School says hello :)" | sudo tee /var/www/html/index.nginx-debian.html
+sed -i '/listen 80 default_server;/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/404-custom.html
+sed -i '/server_name _;/a error_page 404 /404-custom.html;\nlocation = /404-custom.html {\n    root /usr/share/nginx/html;\n    internal;\n}\n' /etc/nginx/sites-available/default
+service nginx start
