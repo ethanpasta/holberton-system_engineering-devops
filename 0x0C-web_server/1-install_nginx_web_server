@@ -2,5 +2,6 @@
 # Script installs ngingx, and creates temp html index file
 apt-get -y update
 apt-get -y install nginx
+ufw allow 'Nginx HTTP'
 sudo mkdir -p /var/www/html/
 echo "Holberton School says hello" | sudo tee index.html
