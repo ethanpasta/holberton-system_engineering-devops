@@ -4,5 +4,5 @@ apt-get -y update
 apt-get -y nginx
 ufw allow 'Nginx HTTP'
 echo "Holberton School says hello :)" | sudo tee /var/www/html/index.nginx-debian.html
-sed -i 'listen 80 default_server;/a rewrite ^/redirect_me http://www.sanger.dk/ permanent;' /etc/nginx/sites-available/default
+sed -i '/listen 80 default_server;/a rewrite ^/redirect_me http://www.sanger.dk/ permanent;' /etc/nginx/sites-available/default
 service nginx start
