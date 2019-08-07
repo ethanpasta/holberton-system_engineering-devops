@@ -5,3 +5,4 @@ apt-get -y install nginx
 ufw allow 'Nginx HTTP'
 sudo mkdir -p /var/www/html/
 echo "Holberton School says hello" | sudo tee index.html
+service nginx start
