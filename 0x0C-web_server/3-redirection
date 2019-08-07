@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Script configures an Nginx server so that /redirect_me is redirecting to another page
+apt-get -y update
+apt-get -y nginx
+ufw allow 'Nginx HTTP'
+echo "Holberton School says hello :)" | sudo tee /var/www/html/index.nginx-debian.html
+sed -i 'listen 80 default_server;/a rewrite ^/redirect_me http://www.sanger.dk/ permanent;' /etc/nginx/sites-available/default
+service nginx start
