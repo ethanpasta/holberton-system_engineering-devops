@@ -8,4 +8,4 @@ path="$1"
 ip="$2"
 user="$3"
 pass="$4"
-scp -i "$pass" "$path" "$user@$ip":~
+scp -o StrictHostKeyChecking=no -i "$pass" "$path" "$user@$ip":~
