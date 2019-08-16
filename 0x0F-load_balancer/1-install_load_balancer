@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Script configures ubuntu server load-balancer
+apt-get -y update
+apt-get -y install haproxy
+echo "ENABLED=1" >> /etc/default/haproxy
+echo $'listen ethanbalance\n\tbind :80\n\tmode http\n\t balance roundrobin\n\t server 653-web-01 35.196.108.226:80 check \n\t server 653-web-02 34.74.255.195:80 check' >> /etc/haproxy/haproxy.cfg
+service haproxy start
