@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# script like task 0
+sed 's/8080/80/' /etc/nginx/sites-enabled/default
+service nginx stop
