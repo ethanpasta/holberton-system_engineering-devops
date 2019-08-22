@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Script displays information about subdomains
+
+dig_subs () {
+    answer=$(dig "$sub.$dom" | grep -A1 "ANSWER SECTION:" | tail -n+2 | awk '{split($0, a, " "); print a[4], a[5];}')
+    record=$(echo "$answer" | cut -d' ' -f1)
+    points=$(echo "$answer" | cut -d' ' -f2)
+    echo "The subdomain $sub is a $record record and points to $points"
+}
+
+if [ $# -eq 1 ]; then
+    dom="$1"
+    sub="www"
+    dig_subs
+    sub="lb-01"
+    dig_subs
+    sub="web-01"
+    dig_subs
+    sub="web-02"
+    dig_subs
+else
+    dom="$1"
+    sub="$2"
+    dig_subs
+fi
