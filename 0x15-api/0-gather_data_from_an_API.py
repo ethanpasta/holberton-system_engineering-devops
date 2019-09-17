@@ -14,4 +14,4 @@ if __name__ == "__main__":
                                                          len(todo_complete),
                                                          len(todo)))
     for task in todo_complete:
-        print('\t{}'.format(task.get("title")))
+        print('\t {}'.format(task.get("title")))
