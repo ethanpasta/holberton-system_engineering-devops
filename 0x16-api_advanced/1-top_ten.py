@@ -8,10 +8,11 @@ def top_ten(subreddit):
     headers = {
         'User-Agent': 'My-User-Agent'
     }
-    url = "https://www.reddit.com/r/{}/top.json?limit=10".format(subreddit)
+    url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
     r = requests.get(url, headers=headers, allow_redirects=False)
     if r.status_code > 300:
         print("None")
-    else:
-        [print(d.get("data").get("title"))
-         for d in r.json().get("data").get("children")]
+        return
+    listings = r.json()["data"]["children"]
+    for listing in listings:
+        print(listing["data"]["title"])
