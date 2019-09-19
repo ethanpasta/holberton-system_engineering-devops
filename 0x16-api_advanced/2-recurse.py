@@ -4,25 +4,22 @@ import requests
 
 
 def get_lists(headers, data, subreddit, hot_list=[]):
-    if count == 5:
-        return hot_list
     if data:
-        url = "https://www.reddit.com/r/{}/top.json?after={}".format(
+        url = "https://www.reddit.com/r/{}/hot.json?after={}".format(
             subreddit, data)
     else:
-        url = "https://www.reddit.com/r/{}/top.json".format(subreddit)
-    try:
-        r = requests.get(url, headers=headers, data=data)
-        listings = r.json()
-        for listing in listings["data"]["children"]:
-            hot_list.append(listing["data"]["title"])
-        if listings["data"]["after"] != "null":
-            return get_lists(headers, listings["data"]["after"],
-                             subreddit, hot_list)
-        else:
-            return hot_list
-    except Exception:
+        url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
+    r = requests.get(url, headers=headers, allow_redirects=False)
+    if r.status_code > 300:
         return None
+    listings = r.json()
+    for listing in listings["data"]["children"]:
+        hot_list.append(listing["data"]["title"])
+    if listings["data"]["after"] != "null":
+        return get_lists(headers, listings["data"]["after"],
+                         subreddit, hot_list)
+    else:
+        return hot_list
 
 
 def recurse(subreddit, hot_list=[]):
