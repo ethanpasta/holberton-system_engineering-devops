@@ -15,7 +15,7 @@ def get_lists(headers, data, subreddit, hot_list=[]):
     listings = r.json()
     for listing in listings["data"]["children"]:
         hot_list.append(listing["data"]["title"])
-    if listings["data"]["after"] != "null":
+    if listings["data"]["after"] is not None:
         return get_lists(headers, listings["data"]["after"],
                          subreddit, hot_list)
     else:
