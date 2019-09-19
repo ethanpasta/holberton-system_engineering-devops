@@ -10,10 +10,10 @@ def top_ten(subreddit):
                        'Chrome/76.0.3809.132 Safari/537.36')
     }
     url = "https://www.reddit.com/r/{}/top.json?limit=10".format(subreddit)
-    r = requests.get(url, headers=headers)
-    try:
-        listings = r.json()["data"]["children"]
-        for listing in listings:
-            print(listing["data"]["title"])
-    except Exception:
-        return 0
+    r = requests.get(url, headers=headers, allow_redirects=False)
+    if r.status_code > 300:
+        print("None")
+        return
+    listings = r.json()["data"]["children"]
+    for listing in listings:
+        print(listing["data"]["title"])
